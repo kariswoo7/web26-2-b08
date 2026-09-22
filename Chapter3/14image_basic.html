@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Media Basic</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eeeeee;
+        }
+
+        h2 {
+            color: navy;
+        }
+
+        img {
+            margin: 5px;
+            border: 1px solid black;
+        }
+
+        audio,
+        video {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>14 Image Basic</h2>
+
+    <img src="Penguins.jpg" alt="펭귄" width="300">
+    <img src="Nothing" alt="그림이 존재하지 않습니다. 펭귄" width="300">
+    <img src="https://www.mjc.ac.kr/resource/site_theme/ST0000000002/images/contents/img_simbol.gif"
+         alt="명지전문대 로고" width="300">
+    <img src="horse.jpg" alt="말" width="300">
+
+    <h2>15 Audio Basic</h2>
+
+    <audio src="Kalimba.mp3" controls></audio>
+
+    <h2>16 Audio Source</h2>
+
+    <audio controls>
+        <source src="Kalimba.mp3" type="audio/mpeg">
+        <source src="Kalimba.ogg" type="audio/ogg">
+    </audio>
+
+    <h2>17 Video Basic</h2>
+
+    <video controls>
+        <source src="Wildlife.mp4" type="video/mp4">
+        <source src="Wildlife.webm" type="video/webm">
+    </video>
+
+    <h2>18 Video Poster</h2>
+
+    <video controls poster="horse.jpg">
+        <source src="Wildlife.mp4" type="video/mp4">
+        <source src="Wildlife.webm" type="video/webm">
+    </video>
+
+</body>
+</html>
