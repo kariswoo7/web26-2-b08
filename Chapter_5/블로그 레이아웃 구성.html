@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 Basic Page - CSS 응용 과제</title>
+    <style>
+        /* 1. 기본 설정 및 중앙 정렬 (ID 선택자) */
+        body {
+            font-family: '맑은 고딕', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        #page-wrapper {
+            width: 980px;
+            margin: 0 auto; /* 화면 중앙 정렬 */
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* 2. 헤더 영역 (후손 및 그룹 선택자 활용) */
+        #main-header {
+            padding: 30px 20px;
+            background-color: #2c3e50;
+        }
+        /* 그룹 선택자로 두 제목의 마진을 한 번에 제거하고 색상 변경 */
+        #main-header h1, #main-header h2 {
+            margin: 0;
+            color: white;
+        }
+        #main-header h2 {
+            font-size: 14px;
+            font-weight: normal;
+            color: #bdc3c7;
+            margin-top: 5px;
+        }
+
+        /* 3. 네비게이션 영역 (Float 레이아웃 및 반응 선택자) */
+        #main-navigation {
+            background-color: #34495e;
+            padding: 10px 20px;
+            overflow: hidden; /* float 해제 (배운 내용 응용) */
+        }
+        .pull-left { float: left; }
+        .pull-right { float: right; }
+
+        ul.outer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .outer-menu-item {
+            float: left; /* 메뉴를 가로로 배치 */
+            margin-right: 30px;
+        }
+        .menu-title {
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* 서브메뉴 디자인 및 호버 효과 (반응/후손 선택자) */
+        .inner-menu {
+            list-style: none;
+            padding: 0;
+            display: none; /* 평소에는 숨김 */
+        }
+        .outer-menu-item:hover .inner-menu {
+            display: block; /* 마우스 올리면 서브메뉴 표시! */
+        }
+        .inner-menu-item a {
+            color: #bdc3c7;
+            text-decoration: none;
+            display: block;
+            margin-top: 5px;
+        }
+        .inner-menu-item a:hover {
+            color: orange; /* 마우스 올렸을 때 색상 변경 */
+        }
+
+        /* 4. 검색창 (속성 및 상태 선택자 완벽 적용) */
+        input[type="text"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+        }
+        input[type="text"]:focus {
+            background-color: wheat; /* 클릭하여 포커스 시 배경색 변경 */
+            outline: none;
+        }
+        input[type="submit"] {
+            padding: 5px 15px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #c0392b; /* 버튼에 마우스 올렸을 때 */
+        }
+
+        /* 5. 본문 영역 (2단 Float 레이아웃 및 자식 선택자) */
+        #content {
+            overflow: hidden; /* float 해제 */
+            padding: 20px;
+        }
+        #main-section {
+            width: 650px;
+            float: left; /* 본문을 왼쪽에 배치 */
+        }
+        /* 자식 선택자(>)를 이용해 article 구조 잡기 */
+        #main-section > article {
+            margin-bottom: 40px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 20px;
+        }
+        .article-date {
+            color: gray;
+            font-size: 13px;
+        }
+
+        /* 6. 사이드바 영역 */
+        #main-aside {
+            width: 250px;
+            float: right; /* 사이드바를 오른쪽에 배치 */
+            background-color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .aside-list h3 {
+            border-bottom: 2px solid #34495e;
+            padding-bottom: 5px;
+            color: #2c3e50;
+        }
+        .aside-list ul {
+            list-style: square;
+            padding-left: 20px;
+        }
+        .aside-list ul li a {
+            text-decoration: none;
+            color: #333;
+            line-height: 1.8;
+        }
+        .aside-list ul li a:hover {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        /* 7. 푸터 영역 */
+        #main-footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #2c3e50;
+        }
+        #main-footer a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page-wrapper">
+        <header id="main-header">
+            <hgroup>
+                <h1 class="master-title">HTML5 Example Preview</h1>
+                <h2 class="master-description">한빛아카데미</h2>
+            </hgroup>
+        </header>
+        <nav id="main-navigation">
+            <div class="pull-left">
+                <ul class="outer-menu">
+                    <li class="outer-menu-item">
+                        <span class="menu-title">HTML5</span>
+                        <ul class="inner-menu">
+                            <li class="inner-menu-item"><a href="#">데이터 1</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="outer-menu-item">
+                        <span class="menu-title">CSS3</span>
+                        <ul class="inner-menu">
+                            <li class="inner-menu-item"><a href="#">데이터 1</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터 2</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터 3</a></li>
+                        </ul>
+                    </li>
+                    <li class="outer-menu-item">
+                        <span class="menu-title">JavaScript</span>
+                        <ul class="inner-menu">
+                            <li class="inner-menu-item"><a href="#">데이터 1</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터 2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="pull-right">
+                <div class="search-bar">
+                    <form>
+                        <input type="text" class="input-search" placeholder="검색어 입력">
+                        <input type="submit" class="input-search-submit" value="검색">
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div id="content">
+            <section id="main-section">
+                <article>
+                    <div class="article-header">
+                        <h1 class="article-title">HTML5 개요와 활용</h1>
+                        <p class="article-date">2023년 05월 22일</p>
+                    </div>
+                    <div class="article-body">
+                        <img src="http://via.placeholder.com/650x200" alt="본문 이미지 1">
+                        <br><br>
+                        <p>웹 표준을 준수하는 HTML5 레이아웃 실습입니다. 지금까지 배운 시맨틱 태그와 CSS 선택자를 활용하여 문서를 구조화하고 디자인을 입혔습니다.</p>
+                    </div>
+                </article>
+                <article>
+                    <div class="article-header">
+                        <h1 class="article-title">HTML5 응용과 실습</h1>
+                        <p class="article-date">2023년 05월 24일</p>
+                    </div>
+                    <div class="article-body">
+                        <img src="http://via.placeholder.com/650x200" alt="본문 이미지 2">
+                        <br><br>
+                        <p>CSS의 반응 선택자(:hover)와 상태 선택자(:focus)를 적재적소에 활용하여 사용자 경험(UX)을 고려한 동적인 웹페이지를 구현했습니다.</p>
+                    </div>
+                </article>
+            </section>
+            <aside id="main-aside">
+                <div class="aside-list">
+                    <h3>카테고리</h3>
+                    <ul>
+                        <li><a href="#">웹 기획</a></li>
+                        <li><a href="#">프론트엔드</a></li>
+                        <li><a href="#">백엔드</a></li>
+                        <li><a href="#">데이터베이스</a></li>
+                    </ul>
+                </div>
+                <div class="aside-list">
+                    <h3>최근 글</h3>
+                    <ul>
+                        <li><a href="#">선택자 복습하기</a></li>
+                        <li><a href="#">Float 레이아웃</a></li>
+                        <li><a href="#">가상 클래스 활용</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+        <footer id="main-footer">
+            <a href="#">&copy; 2024 ITCookBook HTML5 Programming. All rights reserved.</a>
+        </footer>
+    </div>
+</body>
+
+</html>
